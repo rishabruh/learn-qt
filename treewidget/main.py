@@ -9,7 +9,7 @@ data = {
     "Project C": [],
 }
 
-app = QApplication
+app = QApplication(sys.argv)
 
 tree = QTreeWidget()
 tree.setColumnCount(2)
@@ -22,7 +22,7 @@ for key, values in data.items():
         ext = value.split(".")[-1].upper()
         child = QTreeWidgetItem([value, ext])
         item.addChild(child)
-    items.append(items)
+    items.append(item)
 
 tree.insertTopLevelItems(0, items)
 
