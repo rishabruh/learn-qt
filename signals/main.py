@@ -1,5 +1,4 @@
 import sys
-from pydoc import text
 
 from PySide6.QtWidgets import QApplication, QLineEdit, QPushButton, QToolButton
 
