@@ -1,1 +1,1 @@
-Contents of eveything I'm making using the Qt for Python tutorials in the [official documentation](https://doc.qt.io/qtforpython-6/index.html).
+Contents of eveything I'm making using the Qt for Python tutorials in the [official documentation](https://doc.qt.io/qtforpython-6/index.html). It's also helping me build a habit for using Git.
