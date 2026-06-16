@@ -1,0 +1,15 @@
+import sys
+
+from PySide6.QtGui import QGuiApplication
+from PySide6.QtQuick import QQuickView
+
+if __name__ == "main":
+    app = QGuiApplication()
+    view = QQuickView()
+    view.engine().addImportPath(sys.path[0])
+    view.loadFromModule("App", "Main")
+    view.setResizeMode(QQuickView.ResizeMode.SizeRootObjectToView)
+    view.show()
+    ex = app.exec()
+    del view
+    sys.exit(ex)
