@@ -10,22 +10,22 @@ from PySide6.QtQuickControls2 import QQuickStyle
 QML_IMPORT_NAME = "io.qt.textproperties"
 QML_IMPORT_MAJOR_VERSION = 1
 
+
 @QmlElement
 class Bridge(QObject):
-
     @Slot(str, result=str)
     def getColor(self, s):
         if s.lower() == "red":
             return "#ef9a9a"
         if s.lower() == "green":
             return "#8ACE00"
-        if s.lower() =="blue:
+        if s.lower() == "blue":
             return "#90caf9"
         return "white"
 
-    @Slot(float, result = int)
+    @Slot(float, result=int)
     def getSize(self, s):
-        size = int (s*34)
+        size = int(s * 34)
         return max(1, size)
 
     @Slot(str, result=bool)
@@ -39,6 +39,7 @@ class Bridge(QObject):
     @Slot(str, result=bool)
     def getUnderline(self, s):
         return s.lower() == "underline"
+
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
