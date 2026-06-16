@@ -47,10 +47,9 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignLeft
                 text: "Italic"
                 onToggled: {
-                    leftlabel.font.italic = bridge.getItalic(italic.text)
-                    leftlabel.font.bold = bridge.getBold(italic.text)
-                    leftlabel.font.underline = bridge.getUnderline(italic.text)
-
+                    leftlabel.font.italic = bridge.getItalic(italic.text);
+                    leftlabel.font.bold = bridge.getBold(italic.text);
+                    leftlabel.font.underline = bridge.getUnderline(italic.text);
                 }
             }
             RadioButton {
@@ -58,9 +57,9 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignLeft
                 text: "Bold"
                 onToggled: {
-                    leftlabel.font.italic = bridge.getItalic(bold.text)
-                    leftlabel.font.bold = bridge.getBold(bold.text)
-                    leftlabel.font.underline = bridge.getUnderline(bold.text)
+                    leftlabel.font.italic = bridge.getItalic(bold.text);
+                    leftlabel.font.bold = bridge.getBold(bold.text);
+                    leftlabel.font.underline = bridge.getUnderline(bold.text);
                 }
             }
             RadioButton {
@@ -68,9 +67,9 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignLeft
                 text: "Underline"
                 onToggled: {
-                    leftlabel.font.italic = bridge.getItalic(underline.text)
-                    leftlabel.font.bold = bridge.getBold(underline.text)
-                    leftlabel.font.underline = bridge.getUnderline(underline.text)
+                    leftlabel.font.italic = bridge.getItalic(underline.text);
+                    leftlabel.font.bold = bridge.getBold(underline.text);
+                    leftlabel.font.underline = bridge.getUnderline(underline.text);
                 }
             }
             RadioButton {
@@ -79,9 +78,9 @@ ApplicationWindow {
                 text: "None"
                 checked: true
                 onToggled: {
-                    leftlabel.font.italic = bridge.getItalic(noneradio.text)
-                    leftlabel.font.bold = bridge.getBold(noneradio.text)
-                    leftlabel.font.underline = bridge.getUnderline(noneradio.text)
+                    leftlabel.font.italic = bridge.getItalic(noneradio.text);
+                    leftlabel.font.bold = bridge.getBold(noneradio.text);
+                    leftlabel.font.underline = bridge.getUnderline(noneradio.text);
                 }
             }
         }
@@ -97,14 +96,13 @@ ApplicationWindow {
             RowLayout {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-
                 Button {
                     id: red
                     text: "Red"
                     highlighted: true
                     Material.accent: Material.Red
                     onClicked: {
-                        leftlabel.color = bridge.getColor(red.text)
+                        leftlabel.color = bridge.getColor(red.text);
                     }
                 }
                 Button {
@@ -113,7 +111,7 @@ ApplicationWindow {
                     highlighted: true
                     Material.accent: Material.Green
                     onClicked: {
-                        leftlabel.color = bridge.getColor(green.text)
+                        leftlabel.color = bridge.getColor(green.text);
                     }
                 }
                 Button {
@@ -122,7 +120,7 @@ ApplicationWindow {
                     highlighted: true
                     Material.accent: Material.Blue
                     onClicked: {
-                        leftlabel.color = bridge.getColor(blue.text)
+                        leftlabel.color = bridge.getColor(blue.text);
                     }
                 }
                 Button {
@@ -131,7 +129,7 @@ ApplicationWindow {
                     highlighted: true
                     Material.accent: Material.BlueGrey
                     onClicked: {
-                        leftlabel.color = bridge.getColor(nonebutton.text)
+                        leftlabel.color = bridge.getColor(nonebutton.text);
                     }
                 }
             }
@@ -146,12 +144,12 @@ ApplicationWindow {
                     Material.accent: Material.White
                 }
                 Slider {
-                    width: rightcolumn.width*0.6
-                    Layout.alignment: Qt.AlignRight
                     id: slider
+                    width: rightcolumn.width * 0.6
+                    Layout.alignment: Qt.AlignRight
                     value: 0.5
                     onValueChanged: {
-                        leftlabel.font.pointSize = bridge.getSize(value)
+                        leftlabel.font.pointSize = bridge.getSize(value);
                     }
                 }
             }
