@@ -1,3 +1,6 @@
 .DS_Store
 Basic/styling/__pycache__/
 Intermediate/qmlLoader/__pycache__/
+skills-lock.json
+.agents/skills/
+.venv/
