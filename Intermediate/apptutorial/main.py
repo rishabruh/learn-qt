@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import json
-import urllib
+import urllib.request
 
 #from PySide6.QtWidgets import QApplication
 from PySide6.QtQuick import QQuickView
