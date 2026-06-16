@@ -6,9 +6,6 @@ from enum import IntEnum
 from PySide6.QtCore import QAbstractListModel, QByteArray, QEnum, QModelIndex, Qt, Slot
 from PySide6.QtQml import QmlElement
 
-from Basic.tablewidget.main import itemName
-from Intermediate.qmlLoader.main import QML_IMPORT_MAJOR_VERSION, QML_IMPORT_NAME
-
 QML_IMPORT_NAME = "Finance"
 QML_IMPORT_MAJOR_VERSION = 1
 
@@ -27,12 +24,12 @@ class FinanceModel(QAbstractListModel):
     class Finance:
         item_name: str
         category: str
-        cost: str
+        cost: float
         date: str
 
         @property
         def month(self):
-            return datetime.strptime(self.date, "%d-%m-%y").strftime("%B %Y")
+            return datetime.strptime(self.date, "%d-%m-%Y").strftime("%B %Y")
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -48,16 +45,54 @@ class FinanceModel(QAbstractListModel):
         )
         self.m_finances.append(self.Finance("Books", "Education", 25.00, "18-01-2026"))
 
-    def rowCount(
-        self,
-        /,
-        parent: PySide6.QtCore.QModelIndex | PySide6.QtCore.QPersistentModelIndex = ...,
-    ) -> int:
+    def rowCount(self, parent=QModelIndex()):
         return len(self.m_finances)
 
     def data(self, index: QModelIndex, role: int):
         row = index.row()
         if row < self.rowCount():
             finance = self.m_finances[row]
-            if role === FinanceModel.FinanceRole.ItemNameRole:
+            if role == FinanceModel.FinanceRole.ItemNameRole:
                 return finance.item_name
+            if role == FinanceModel.FinanceRole.CategoryRole:
+                return finance.category
+            if role == FinanceModel.FinanceRole.CostRole:
+                return finance.cost
+            if role == FinanceModel.FinanceRole.DateRole:
+                return finance.date
+            if role == FinanceModel.FinanceRole.MonthRole:
+                return finance.month
+            return None
+
+    @Slot(result=dict)
+    def getCategoryData(self):
+        category_data = defaultdict(float)
+        for finance in self.m_finances:
+            category_data[finance.category] += finance.cost
+        return dict(category_data)
+
+    def roleNames(self):
+        roles = super().roleNames()
+        roles[FinanceModel.FinanceRole.ItemNameRole] = QByteArray(b"item_name")
+        roles[FinanceModel.FinanceRole.CategoryRole] = QByteArray(b"category")
+        roles[FinanceModel.FinanceRole.CostRole] = QByteArray(b"cost")
+        roles[FinanceModel.FinanceRole.DateRole] = QByteArray(b"date")
+        roles[FinanceModel.FinanceRole.MonthRole] = QByteArray(b"month")
+        return roles
+
+    @Slot(int, result="QVariantMap")
+    def get(self, row: int):
+        finance = self.m_finances[row]
+        return {
+            "item_name": finance.item_name,
+            "category": finance.category,
+            "cost": finance.cost,
+            "date": finance.date,
+        }
+
+    @Slot(str, str, float, str)
+    def append(self, item_name: str, category: str, cost: float, date: str):
+        finance = self.Finance(item_name, category, cost, date)
+        self.beginInsertRows(QModelIndex(), 0, 0)
+        self.m_finances.insert(0, finance)
+        self.endInsertRows()
