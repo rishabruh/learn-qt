@@ -4,10 +4,10 @@ Rectangle {
     id: main
     width: 200
     height: 200
-    color: "green"
+    color: "#8ACE00"
 
     Text {
-        text: "Hello world"
+        text: "Brat"
         anchors.centerIn: main
     }
 }
