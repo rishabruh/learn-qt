@@ -7,7 +7,7 @@ Rectangle {
     color: "#8ACE00"
 
     Text {
-        text: "Brat"
+        text: "Brat\nSummer"
         anchors.centerIn: main
     }
 }
